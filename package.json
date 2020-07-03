@@ -4,7 +4,9 @@
   "description": "mongo api w mocked data",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set DEBUG=server & node server.js",
+    "lint": "eslint server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,16 @@
   },
   "homepage": "https://github.com/coolsitebiz/effective-fiesta#readme",
   "dependencies": {
+    "bootstrap": "4.5.0",
     "chalk": "^4.1.0",
-    "express": "^4.17.1"
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "jquery": "3.5.1",
+    "morgan": "1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "7.4.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.0"
   }
 }
