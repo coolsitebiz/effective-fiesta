@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set DEBUG=server & node server.js",
+    "start": "set DEBUG=server & nodemon server.js",
     "lint": "eslint server.js"
   },
   "repository": {
@@ -19,16 +19,26 @@
   },
   "homepage": "https://github.com/coolsitebiz/effective-fiesta#readme",
   "dependencies": {
-    "bootstrap": "4.5.0",
+    "bootstrap": "^4.5.0",
     "chalk": "^4.1.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
-    "jquery": "3.5.1",
-    "morgan": "1.10.0"
+    "jquery": "^3.5.1",
+    "morgan": "^1.10.0",
+    "nodemon": "2.0.4"
   },
   "devDependencies": {
     "eslint": "7.4.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-plugin-import": "2.22.0"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": ["node_modules/**/node_modules"],
+    "delay": "2000",
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 4000
+    }
   }
 }

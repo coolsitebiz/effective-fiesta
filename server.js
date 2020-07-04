@@ -4,8 +4,9 @@ const debug = require('debug')('server');
 const morgan = require('morgan');
 const path = require('path');
 
-const port = 3000;
+
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
