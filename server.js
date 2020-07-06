@@ -6,6 +6,7 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const router = express.Router();
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -15,8 +16,25 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+router.route('/')
+  .get((req, res) => {
+    res.render('items');
+  });
+
+router.route('/item')
+  .get((req, res) => {
+    res.send('hello single item');
+  });
+
+app.use('/items', router);
 app.get('/', (req, res) => {
-  res.render('index', { list: ['item 1', 'item 2', 'item 3'], title: 'TITLE FOR THE PAGE' });
+  res.render(
+    'index',
+    {
+      list: ['item 1', 'item 2', 'item 3'],
+      title: 'TITLE FOR THE PAGE'
+    }
+  );
 });
 
 app.listen(port, () => {
