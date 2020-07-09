@@ -2,14 +2,18 @@ const express = require('express');
 
 const certRouter = express.Router();
 
-certRouter.route('/')
-  .get((req, res) => {
-    res.render('items');
-  });
+function router(dummyData) {
+  certRouter.route('/')
+    .get((req, res) => {
+      res.render('items', dummyData);
+    });
 
-certRouter.route('/item')
-  .get((req, res) => {
-    res.send('hello single item');
-  });
+  certRouter.route('/item')
+    .get((req, res) => {
+      res.render('item');
+    });
 
-module.exports = certRouter;
+  return certRouter;
+}
+
+module.exports = router;

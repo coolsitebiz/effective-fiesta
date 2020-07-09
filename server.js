@@ -6,7 +6,10 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const certRouter = require('./src/routes/certRoutes');
+
+const dummyData = { data: 'foo' };
+
+const certRouter = require('./src/routes/certRoutes')(dummyData);
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
