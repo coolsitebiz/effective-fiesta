@@ -12,4 +12,24 @@ const certs = [
   'Personal Productivity'
 ];
 
-console.log(firstName, lastName, netid, certs[Math.floor(Math.random() * Math.floor(5))]);
+function getCerts() {
+  const completedCerts = [];
+  const usedCerts = [];
+  const numc = Math.floor(Math.random() * Math.floor(certs.length));
+  for (let i = 0; i < numc; i += 1) {
+    const randomCert = Math.floor(Math.random() * Math.floor(certs.length));
+    if (!usedCerts.includes(certs[randomCert])) {
+      completedCerts.push({ certificate: certs[randomCert], date: faker.date.recent() });
+      usedCerts.push(certs[randomCert]);
+    }
+  }
+  return completedCerts;
+}
+
+const user = {
+  name: `${firstName} ${lastName}`,
+  netid,
+  certificates: getCerts()
+};
+
+console.log(user);
