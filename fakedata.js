@@ -1,8 +1,6 @@
 const faker = require('faker');
 
-const firstName = faker.name.firstName();
-const lastName = faker.name.lastName();
-const netid = faker.random.uuid();
+const userList = [];
 
 const certs = [
   'Supervisory Skills',
@@ -15,8 +13,8 @@ const certs = [
 function getCerts() {
   const completedCerts = [];
   const usedCerts = [];
-  const numc = Math.floor(Math.random() * Math.floor(certs.length));
-  for (let i = 0; i < numc; i += 1) {
+  const numCerts = Math.floor(Math.random() * Math.floor(certs.length));
+  for (let i = 0; i < numCerts; i += 1) {
     const randomCert = Math.floor(Math.random() * Math.floor(certs.length));
     if (!usedCerts.includes(certs[randomCert])) {
       completedCerts.push({ certificate: certs[randomCert], date: faker.date.recent() });
@@ -26,10 +24,23 @@ function getCerts() {
   return completedCerts;
 }
 
-const user = {
-  name: `${firstName} ${lastName}`,
-  netid,
-  certificates: getCerts()
-};
+function createUser() {
+  const user = {
+    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+    netid: faker.random.uuid(),
+    certificates: getCerts()
+  };
 
-console.log(user);
+  return user;
+}
+
+function createUserList(numUsers) {
+  for (let i = 0; i < numUsers; i += 1) {
+    let newUser = createUser();
+    userList.push(newUser);
+    newUser = createUser();
+  }
+}
+
+createUserList(50);
+console.log(userList);
