@@ -7,9 +7,10 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const dummyData = { data: 'foo' };
+const data = { data: 'foo' };
 
-const certRouter = require('./src/routes/certRoutes')(dummyData);
+const certRouter = require('./src/routes/certRoutes')(data);
+const adminRouter = require('./src/routes/adminRoutes')(data);
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
@@ -19,6 +20,7 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+app.use('/admin', adminRouter);
 app.use('/items', certRouter);
 app.get('/', (req, res) => {
   res.render(

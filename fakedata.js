@@ -36,11 +36,9 @@ function createUser() {
 
 function createUserList(numUsers) {
   for (let i = 0; i < numUsers; i += 1) {
-    let newUser = createUser();
-    userList.push(newUser);
-    newUser = createUser();
+    userList.push(createUser());
   }
+  return userList;
 }
 
-createUserList(50);
-console.log(userList);
+module.exports = createUserList;
