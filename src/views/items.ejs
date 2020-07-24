@@ -7,7 +7,9 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron">items <%=data%>
+    <div class="jumbotron"><%for (let i=0; i<users.length; i++) {%>
+      <li><%=users[i].name%></li>
+      <%}%>
     </div>
   </div>
 

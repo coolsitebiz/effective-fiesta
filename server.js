@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 const data = { data: 'foo' };
 
-const certRouter = require('./src/routes/certRoutes')(data);
+const certRouter = require('./src/routes/certRoutes')();
 const adminRouter = require('./src/routes/adminRoutes')(data);
 
 app.use(morgan('tiny'));
