@@ -1,4 +1,5 @@
 const faker = require('faker');
+const { ObjectId } = require('mongodb');
 
 const userList = [];
 
@@ -17,7 +18,7 @@ function getCerts() {
   for (let i = 0; i < numCerts; i += 1) {
     const randomCert = Math.floor(Math.random() * Math.floor(certs.length));
     if (!usedCerts.includes(certs[randomCert])) {
-      completedCerts.push({ certificate: certs[randomCert], date: faker.date.recent() });
+      completedCerts.push({ id: ObjectId(), certificate: certs[randomCert], date: faker.date.recent() });
       usedCerts.push(certs[randomCert]);
     }
   }
