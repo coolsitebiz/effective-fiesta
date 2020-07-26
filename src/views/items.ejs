@@ -8,14 +8,8 @@
 <body>
   <div class="container">
     <div class="jumbotron"><%for (let i=0; i<users.length; i++) {%>
-      <%
-        let certArray = users[i].certificates;
-        let outputArray = [];
-        certArray.forEach((item) => {
-          outputArray.push(item.certificate);
-        })
-      %>
-      <li><%=users[i].name%><br />
+
+      <li><%= users[i].lastName + ", " + users[i].firstName %><br />
         <% for(let cert of users[i].certificates) { %>
         <li style="margin-left: 25px;"><%= cert.certificate %></li>
         <% } %>

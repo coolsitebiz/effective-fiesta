@@ -18,7 +18,11 @@ function getCerts() {
   for (let i = 0; i < numCerts; i += 1) {
     const randomCert = Math.floor(Math.random() * Math.floor(certs.length));
     if (!usedCerts.includes(certs[randomCert])) {
-      completedCerts.push({ id: ObjectId(), certificate: certs[randomCert], date: faker.date.recent() });
+      completedCerts.push({
+        id: ObjectId(),
+        certificate: certs[randomCert],
+        date: faker.date.recent()
+      });
       usedCerts.push(certs[randomCert]);
     }
   }
@@ -27,7 +31,8 @@ function getCerts() {
 
 function createUser() {
   const user = {
-    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+    firstName: `${faker.name.firstName()}`,
+    lastName: `${faker.name.lastName()}`,
     netid: faker.random.uuid(),
     certificates: getCerts()
   };
@@ -39,7 +44,18 @@ function createUserList(numUsers) {
   for (let i = 0; i < numUsers; i += 1) {
     userList.push(createUser());
   }
-  return userList;
+  const sortedUsers = userList.sort((a, b) => {
+    const nameA = a.lastName.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.lastName.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+  return sortedUsers;
 }
 
 module.exports = createUserList;
