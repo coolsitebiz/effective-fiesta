@@ -26,7 +26,12 @@ function getCerts() {
       usedCerts.push(certs[randomCert]);
     }
   }
-  return completedCerts;
+  const sortedCerts = completedCerts.sort((a, b) => {
+    if (a.certificate.toUpperCase() > b.certificate.toUpperCase()) { return 1; }
+    if (a.certificate.toUpperCase() < b.certificate.toUpperCase()) { return -1; }
+    return 0;
+  });
+  return sortedCerts;
 }
 
 function createUser() {
@@ -45,8 +50,8 @@ function createUserList(numUsers) {
     userList.push(createUser());
   }
   const sortedUsers = userList.sort((a, b) => {
-    const nameA = a.lastName.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.lastName.toUpperCase(); // ignore upper and lowercase
+    const nameA = a.lastName.toUpperCase() + a.firstName.toUpperCase();
+    const nameB = b.lastName.toUpperCase() + b.firstName.toUpperCase();
     if (nameA < nameB) {
       return -1;
     }
