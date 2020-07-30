@@ -22,7 +22,11 @@ function certController() {
     }());
   }
 
-  return { getUsers };
+  function getUserById(req, res) {
+    res.send('it worked');
+  }
+
+  return { getUsers, getUserById };
 }
 
 module.exports = certController;
