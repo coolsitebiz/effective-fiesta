@@ -7,7 +7,7 @@ function router() {
   const { getUsers, getUserById } = certController();
   certRouter.route('/')
     .get(getUsers);
-  certRouter.route('/item')
+  certRouter.route('/:id')
     .get(getUserById);
 
   return certRouter;

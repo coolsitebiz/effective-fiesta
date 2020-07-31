@@ -9,7 +9,7 @@
   <div class="container">
     <div class="jumbotron"><%for (let i=0; i<users.length; i++) {%>
 
-      <li><a href=<%="items/item/" + users[i].netid%>><%= users[i].lastName + ", " + users[i].firstName %></a><br />
+      <li><a href=<%="items/" + users[i].netid%>><%= users[i].lastName + ", " + users[i].firstName %></a><br />
         <% for(let cert of users[i].certificates) { %>
         <li style="margin-left: 25px;"><%= cert.certificate %></li>
         <% } %>
