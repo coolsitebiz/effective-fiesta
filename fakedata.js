@@ -21,7 +21,7 @@ function getCerts() {
       completedCerts.push({
         id: ObjectId(),
         certificate: certs[randomCert],
-        date: faker.date.recent()
+        date: faker.date.past()
       });
       usedCerts.push(certs[randomCert]);
     }

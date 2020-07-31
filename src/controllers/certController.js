@@ -30,7 +30,7 @@ function certController() {
         const db = client.db(dbName);
         const col = db.collection('users');
         const response = await col.findOne({ netid: req.params.id });
-        res.send(response);
+        res.render('item', { user: response });
       } catch (err) {
         debug(err);
       }

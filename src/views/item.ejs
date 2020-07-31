@@ -7,7 +7,18 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron">item
+    <div class="jumbotron"><h3><%=user.firstName + " " + user.lastName %></h3>
+      <h5>netid:&nbsp;<%=user.netid%></h5>
+      <% 
+        if (user.certificates.length === 0) { %>
+          <li style="margin-left: 25px;">No certificates</li>
+        <%}
+        for (let i = 0; i < user.certificates.length; i = i + 1 ) { 
+          let [month, date, year] = user.certificates[i].date.toLocaleDateString().split("/")
+          %>
+          <li style="margin-left: 25px;"><%= user.certificates[i].certificate %>, <%= month + "/" + date + "/" + year %></li>
+        <%}
+      %>
     </div>
   </div>
 
