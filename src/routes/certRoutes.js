@@ -4,9 +4,11 @@ const certController = require('../controllers/certController');
 const certRouter = express.Router();
 
 function router() {
-  const { getUsers, getUserById } = certController();
+  const { getUsers, getUserById, getUserCertById } = certController();
   certRouter.route('/')
     .get(getUsers);
+  certRouter.route('/:id/:certId')
+    .get(getUserCertById);
   certRouter.route('/:id')
     .get(getUserById);
 
