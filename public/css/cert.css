@@ -1,0 +1,12 @@
+body {
+    color: red;
+}
+
+.container {
+    max-width: 95vw;
+    height: 93.5vh;
+    margin-right: auto;
+    margin-left: auto;
+    border: 15px solid green;
+    border-radius: 3px;
+}

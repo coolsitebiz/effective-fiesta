@@ -55,7 +55,7 @@ function certController() {
           certificate: cert.certificate,
           date: `${month}/${date}/${year}`
         };
-        res.send(certObj);
+        res.render('cert', certObj);
       } catch (err) {
         debug(err);
       }

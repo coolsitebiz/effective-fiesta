@@ -2,22 +2,15 @@
 
 <head>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/cert.css">
 </head>
 
 <body>
   <div class="container">
-    <div class="jumbotron"><h3><%=user.firstName + " " + user.lastName %></h3>
-      <% 
-        if (user.certificates.length === 0) { %>
-          <li style="margin-left: 25px;">No certificates</li>
-        <%}
-        for (let i = 0; i < user.certificates.length; i = i + 1 ) { 
-          let [month, date, year] = user.certificates[i].date.toLocaleDateString().split("/")
-          %>
-          <li style="margin-left: 25px;"><%= user.certificates[i].certificate %>, <%= month + "/" + date + "/" + year %></li>
-        <%}
-      %>
+    <div class="jumbotron">
+          This certifies that <%= name %><br />
+          has completed a certification in <%= certificate %><br />
+          on <%= date %>
     </div>
   </div>
 
