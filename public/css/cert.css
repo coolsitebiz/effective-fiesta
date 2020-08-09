@@ -1,12 +1,56 @@
 body {
-    color: red;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
-    max-width: 95vw;
+    max-width: 1080px;
+    max-height: 768px;
     height: 93.5vh;
     margin-right: auto;
     margin-left: auto;
-    border: 15px solid green;
-    border-radius: 3px;
+    border: 15px solid transparent;
+    display: flex;
+    flex-direction: column;
+    
+}
+.head { 
+    display: flex;
+    background: rgb(112, 112, 167);
+    border: 5px solid black;
+    border-bottom: 0;
+    justify-content: center;
+    text-align: center;
+    flex-basis: 20%
+}
+.head > p {
+    font-size: 2em;
+    align-self: center;
+}
+.body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    flex-basis: 60%;
+    background-color: lightgrey;
+    font-size: 1.3em;
+    border: 5px solid black;
+}
+
+.name {
+    font-size: 2em;
+}
+
+.certificate {
+    font-size: 2em;;
+}
+.foot {
+    display: flex;
+    flex-basis: 20%;
+    background-color: gray;
+    align-content: center;
+    justify-content: center;
+    border: 5px solid black;
+    border-top: 0;
 }
