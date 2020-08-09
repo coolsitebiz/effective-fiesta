@@ -53,7 +53,9 @@ function certController() {
         const certObj = {
           name: `${response.firstName} ${response.lastName}`,
           certificate: cert.certificate,
-          date: `${month}/${date}/${year}`
+          date: `${month}/${date}/${year}`,
+          userId: response.netid,
+          certId: cert.id
         };
         res.render('cert', certObj);
       } catch (err) {

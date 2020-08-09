@@ -30,20 +30,25 @@ body {
 .body {
     display: flex;
     flex-direction: column;
-    align-content: center;
     align-items: center;
+    justify-content: center;
     flex-basis: 60%;
     background-color: lightgrey;
     font-size: 1.3em;
     border: 5px solid black;
 }
 
+.body > p {
+    margin: 0;
+}
 .name {
     font-size: 2em;
+    padding-bottom: 50px;
 }
 
 .certificate {
-    font-size: 2em;;
+    font-size: 2em;
+    padding-bottom: 50px;
 }
 .foot {
     display: flex;
@@ -53,4 +58,8 @@ body {
     justify-content: center;
     border: 5px solid black;
     border-top: 0;
+}
+
+.foot > p {
+    align-self: center;
 }
