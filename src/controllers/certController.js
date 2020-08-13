@@ -64,7 +64,31 @@ function certController() {
     }());
   }
 
-  return { getUsers, getUserById, getUserCertById };
+  function getUsersByName(req, res) {
+    (async function mongo() {
+      let client;
+      const userName = req.body.lastName;
+      try {
+        client = await MongoClient.connect(url, { useUnifiedTopology: true });
+        debug(`Connected to database server at ${url}`);
+        debug(chalk.yellow('Calling getUsersByName'));
+        const db = client.db(dbName);
+        const col = db.collection('users');
+        const response = await col.findOne({ lastName: userName });
+        res.render('item', { user: response });
+      } catch (err) {
+        debug(err.stack);
+      }
+      client.close();
+    }());
+  }
+
+  return {
+    getUsers,
+    getUserById,
+    getUserCertById,
+    getUsersByName
+  };
 }
 
 module.exports = certController;

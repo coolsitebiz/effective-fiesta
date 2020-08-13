@@ -7,18 +7,18 @@
 
 <body>
   <div class="container">
-    <div class="jumbotron"><%=title%>
-      <ul>
-        <%for (let i=0; i<list.length; i++) {%>
-        <li><%=list[i]%></li>
-        <%}%>
-        </ul>
-        </div>
+    <div class="jumbotron">
+      <h3>Search by Name</h3>
+      <form id="userSearch" method="POST" action="/items">
+        Last Name: <input type="text" name="lastName">
+        <input type="submit">
+      </form>
     </div>
+  </div>
 
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 
 </body>
 

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/coolsitebiz/effective-fiesta#readme",
   "dependencies": {
+    "body-parser": "1.19.0",
     "bootstrap": "^4.5.0",
     "chalk": "^4.1.0",
     "debug": "^4.1.1",

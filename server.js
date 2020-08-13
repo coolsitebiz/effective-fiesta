@@ -1,6 +1,7 @@
 const express = require('express');
 const chalk = require('chalk');
 const debug = require('debug')('server');
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -14,6 +15,7 @@ const adminRouter = require('./src/routes/adminRoutes')(data);
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public/')));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
@@ -24,11 +26,7 @@ app.use('/admin', adminRouter);
 app.use('/items', certRouter);
 app.get('/', (req, res) => {
   res.render(
-    'index',
-    {
-      list: ['item 1', 'item 2', 'item 3'],
-      title: 'TITLE FOR THE PAGE'
-    }
+    'index'
   );
 });
 
