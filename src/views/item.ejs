@@ -16,7 +16,7 @@
         for (let i = 0; i < user.certificates.length; i = i + 1 ) { 
           let [month, date, year] = user.certificates[i].date.toLocaleDateString().split("/")
           %>
-          <li style="margin-left: 25px;"><a href= <%=user.netid + "/" + user.certificates[i].id %>><%= user.certificates[i].certificate %></a>, <%= month + "/" + date + "/" + year %></li>
+          <li style="margin-left: 25px;"><a href= <%="/items/" + user.netid + "/" + user.certificates[i].id %>><%= user.certificates[i].certificate %></a>, <%= month + "/" + date + "/" + year %></li>
         <%}
       %>
     </div>
