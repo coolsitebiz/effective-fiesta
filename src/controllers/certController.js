@@ -31,7 +31,6 @@ function certController() {
         const db = client.db(dbName);
         const col = db.collection('users');
         const response = await col.findOne({ netid: req.params.id });
-        debug(chalk.green(JSON.stringify(response)));
         res.render('item', { user: response });
       } catch (err) {
         debug(err);
@@ -75,12 +74,11 @@ function certController() {
         debug(chalk.yellow('Calling getUsersByName'));
         const db = client.db(dbName);
         const col = db.collection('users');
-        const response = await col.findOne({ lastName: userName });
-        if (!response) {
+        const response = await col.find({ lastName: { $regex: userName, $options: 'i' } }).toArray();
+        if (response.length === 0) {
           res.render('notfound');
         } else {
-          debug(chalk.green(JSON.stringify(response)));
-          res.render('item', { user: response });
+          res.render('items', { users: response });
         }
       } catch (err) {
         debug(err.stack);
